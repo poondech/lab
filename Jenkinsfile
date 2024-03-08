@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment{
+        DOCKERHUB_CREDS = credentials('dockerhub')
+    }
 
     stages {
         stage('Unit Test') {
@@ -16,12 +19,12 @@ pipeline {
         stage('OWASP Check') {
             steps {
                 script {
-                    dir('app') {
+
                         // Execute OWASP dependency check
                         sh 'npm audit --json > owasp-report.json'
                         // Publish OWASP report to Jenkins
                         stash includes: 'owasp-report.json', name: 'owaspReport'
-                    }
+
                 }
             }
         }
@@ -29,15 +32,13 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    dir('app') {
                         // Build Docker image
-                        sh 'docker build -t your-docker-registry/your-app:${BUILD_NUMBER} .'
+                        sh 'docker build -t poomdechj/applab:${BUILD_NUMBER} .'
                         // Push Docker image to Docker registry
-                        withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                             sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
                         }
-                        sh 'docker push your-docker-registry/your-app:${BUILD_NUMBER}'
-                    }
+                        sh 'docker push poomdechj/applab:${BUILD_NUMBER}'
                 }
             }
         }
@@ -45,11 +46,9 @@ pipeline {
         stage('Deploy to kind K8s') {
             steps {
                 script {
-                    dir('kind') {
                         // Deploy to Kubernetes using manifest, helm, or other method
                         // For simplicity, let's assume using kubectl apply with manifest files
-                        sh 'kubectl apply -f k8s-manifests/'
-                    }
+                        sh 'kubectl apply -f k8s-manifests/' 
                 }
             }
         }
