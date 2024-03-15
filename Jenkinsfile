@@ -8,7 +8,7 @@ pipeline {
         stage('Unit Test') {
             steps {
                 //script {
-                        scm checkout
+                        checkout scm
                         sh 'npm install'
                         sh 'npm test'
                         step([$class: 'JUnitResultArchiver', testResults: '**/test-results.xml'])  
