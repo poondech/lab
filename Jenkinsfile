@@ -43,41 +43,41 @@ pipeline {
             }
         }
 
-        stage('Deploy to kind K8s') {
-            steps {
-                script {
-                        // Deploy to Kubernetes using manifest, helm, or other method
-                        // For simplicity, let's assume using kubectl apply with manifest files
-                        sh 'kubectl apply -f k8s-manifests/' 
-                }
-            }
-        }
-    }
+    //    stage('Deploy to kind K8s') {
+    //        steps {
+    //            script {
+    //                    // Deploy to Kubernetes using manifest, helm, or other method
+    //                    // For simplicity, let's assume using kubectl apply with manifest files
+    //                    sh 'kubectl apply -f k8s-manifests/' 
+    //            }
+    //        }
+    //    }
+    //}
 
-    post {
-        always {
-            // Archive artifacts
-            dir('app') {
-                archiveArtifacts artifacts: 'dist/**/*.js', fingerprint: true
-            }
-
-            // Publish HTML reports
-            dir('app') {
-                publishHTML(target: [
-                    allowMissing: false,
-                    alwaysLinkToLastBuild: false,
-                    keepAll: true,
-                    reportDir: 'coverage',
-                    reportFiles: 'index.html',
-                    reportName: 'Code Coverage Report'
-                ])
-            }
-
-            // Publish OWASP report
-            dir('app') {
-                stash includes: 'owasp-report.json', name: 'owaspReport'
-                archiveArtifacts artifacts: 'owaspReport/*', fingerprint: true
-            }
-        }
-    }
+    //post {
+    //    always {
+    //        // Archive artifacts
+    //        dir('app') {
+    //            archiveArtifacts artifacts: 'dist/**/*.js', fingerprint: true
+    //        }
+//
+    //        // Publish HTML reports
+    //        dir('app') {
+    //            publishHTML(target: [
+    //                allowMissing: false,
+    //                alwaysLinkToLastBuild: false,
+    //                keepAll: true,
+    //                reportDir: 'coverage',
+    //                reportFiles: 'index.html',
+    //                reportName: 'Code Coverage Report'
+    //            ])
+    //        }
+//
+    //        // Publish OWASP report
+    //        dir('app') {
+    //            stash includes: 'owasp-report.json', name: 'owaspReport'
+    //            archiveArtifacts artifacts: 'owaspReport/*', fingerprint: true
+    //        }
+    //    }
+    //}
 }
