@@ -7,39 +7,39 @@ pipeline {
     stages {
         stage('Unit Test') {
             steps {
-                script {
+                //script {
                         scm checkout
                         sh 'npm install'
                         sh 'npm test'
                         step([$class: 'JUnitResultArchiver', testResults: '**/test-results.xml'])  
-                }
+                //}
             }
         }
 
         stage('OWASP Check') {
             steps {
-                script {
+                //script {
 
                         // Execute OWASP dependency check
                         sh 'npm audit --json > owasp-report.json'
                         // Publish OWASP report to Jenkins
                         stash includes: 'owasp-report.json', name: 'owaspReport'
 
-                }
+                //}
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                script {
+                //script {
                         // Build Docker image
-                        sh 'docker build -t poomdechj/applab:${BUILD_NUMBER} .'
+                        sh 'docker build -t poomdechj/applab:$BUILD_NUMBER .'
                         // Push Docker image to Docker registry
                         withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                             sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
                         }
-                        sh 'docker push poomdechj/applab:${BUILD_NUMBER}'
-                }
+                        sh 'docker push poomdechj/applab:$BUILD_NUMBER'
+                //}
             }
         }
 
