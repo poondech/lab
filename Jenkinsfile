@@ -8,7 +8,7 @@ pipeline {
         stage('Unit Test') {
             agent{
                 docker{
-                    image 'node:7.4'
+                    image 'node:20.11.1-alpine3.19'
                 }
             }
             steps {
