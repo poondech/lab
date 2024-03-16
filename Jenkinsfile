@@ -1,5 +1,5 @@
 pipeline {
-    //agent any
+    agent any
     environment{
         DOCKERHUB_CREDS = credentials('dockerhub')
     }
@@ -16,6 +16,7 @@ pipeline {
                         checkout scm
                         //sh 'npm install'
                         //sh 'npm test'
+                        sh 'node --version'
                         sh 'npm ci'
                         sh 'npm run lint'
                         sh 'npm ci:test'
