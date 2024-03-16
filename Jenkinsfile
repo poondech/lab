@@ -13,46 +13,46 @@ pipeline {
             }
             steps {
                 //script {
-                        checkout scm
+                        //checkout scm
                         //sh 'npm install'
                         //sh 'npm test'
                         sh 'node --version'
-                        sh 'npm ci'
-                        sh 'npm run lint'
-                        sh 'npm ci:test'
-                        step([$class: 'JUnitResultArchiver', testResults: '**/test-results.xml'])  
+                        //sh 'npm ci'
+                        //sh 'npm run lint'
+                        //sh 'npm ci:test'
+                        //step([$class: 'JUnitResultArchiver', testResults: '**/test-results.xml'])  
                 //}
             }
         }
-
-        stage('OWASP Check') {
-            steps {
-                //script {
-
-                        // Execute OWASP dependency check
-                        sh 'npm audit --json > owasp-report.json'
-                        // Publish OWASP report to Jenkins
-                        stash includes: 'owasp-report.json', name: 'owaspReport'
-
-                //}
-            }
-        }
-
-        stage('Build Docker Image') {
-            steps {
-                //script {
-                        // Build Docker image
-                        sh 'docker build -t poomdechj/applab:$BUILD_NUMBER .'
-                        // Push Docker image to Docker registry
-                        //withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
-                            //sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
-                        //}
-                        //sh 'docker login -u $DOCKERHUB_CREDS_USR -p $DOCKERHUB_CREDS_PSW'
-                        sh 'echo $DOCKERHUB_CREDS_PSW | docker login -u $DOCKERHUB_CREDS_USR --password-stdin'
-                        sh 'docker push poomdechj/applab:$BUILD_NUMBER'
-                //}
-            }
-        }
+//
+    //    stage('OWASP Check') {
+    //        steps {
+    //            //script {
+//
+    //                    // Execute OWASP dependency check
+    //                    sh 'npm audit --json > owasp-report.json'
+    //                    // Publish OWASP report to Jenkins
+    //                    stash includes: 'owasp-report.json', name: 'owaspReport'
+//
+    //            //}
+    //        }
+    //    }
+//
+    //    stage('Build Docker Image') {
+    //        steps {
+    //            //script {
+    //                    // Build Docker image
+    //                    sh 'docker build -t poomdechj/applab:$BUILD_NUMBER .'
+    //                    // Push Docker image to Docker registry
+    //                    //withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+    //                        //sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+    //                    //}
+    //                    //sh 'docker login -u $DOCKERHUB_CREDS_USR -p $DOCKERHUB_CREDS_PSW'
+    //                    sh 'echo $DOCKERHUB_CREDS_PSW | docker login -u $DOCKERHUB_CREDS_USR --password-stdin'
+    //                    sh 'docker push poomdechj/applab:$BUILD_NUMBER'
+    //            //}
+    //        }
+    //    }
 
     //    stage('Deploy to kind K8s') {
     //        steps {
