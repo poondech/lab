@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    //environment{
-    //    DOCKERHUB_CREDS = credentials('dockerhub')
-    //}
+    environment{
+        DOCKERHUB_CREDS = credentials('dockerhub')
+    }
 
     stages {
         stage('Unit Test') {
@@ -35,9 +35,11 @@ pipeline {
                         // Build Docker image
                         sh 'docker build -t poomdechj/applab:$BUILD_NUMBER .'
                         // Push Docker image to Docker registry
-                        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
-                            sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
-                        }
+                        //withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                            //sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+                        //}
+                        //sh 'docker login -u $DOCKERHUB_CREDS_USR -p $DOCKERHUB_CREDS_PSW'
+                        sh 'echo $DOCKERHUB_CREDS_PSW | docker login -u $DOCKERHUB_CREDS_USR --password-stdin'
                         sh 'docker push poomdechj/applab:$BUILD_NUMBER'
                 //}
             }
