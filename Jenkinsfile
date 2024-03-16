@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    //agent any
     environment{
         DOCKERHUB_CREDS = credentials('dockerhub')
     }
@@ -7,9 +7,8 @@ pipeline {
     stages {
         stage('Unit Test') {
             agent{
-                docker{
-                    image 'node:7.4'
-                }
+                docker image 'node:7.4'
+
             }
             steps {
                 //script {
