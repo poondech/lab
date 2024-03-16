@@ -1,16 +1,16 @@
 pipeline {
-    agent any
+    //agent any
     environment{
         DOCKERHUB_CREDS = credentials('dockerhub')
     }
 
     stages {
         stage('Unit Test') {
-            //agent{
-            //    docker{
-            //        image 'node:20.11.1-alpine3.19'
-            //    }
-            //}
+            agent{
+                docker{
+                    image 'node:20.11.1-alpine3.19'
+                }
+            }
             steps {
                 //script {
                         checkout scm
