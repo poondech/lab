@@ -6,6 +6,11 @@ pipeline {
 
     stages {
         stage('Unit Test') {
+            agent{
+                docker{
+                    image 'node:7.4'
+                }
+            }
             steps {
                 //script {
                         checkout scm
