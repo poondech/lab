@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent none
     environment{
         DOCKERHUB_CREDS = credentials('dockerhub')
     }
@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Unit Test') {
             agent{
-                dockerContainer {
+                docker {
                     image 'node:20.11.1-alpine3.19'
                 }
             }
