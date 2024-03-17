@@ -28,7 +28,7 @@ pipeline {
                     dir('app'){
                 //script {
                         //checkout scm
-                        //sh 'npm install'
+                        sh 'npm install'
                         sh 'node --version'
                         //sh 'npm run test:ci'
                         sh 'npm run test:unit'
