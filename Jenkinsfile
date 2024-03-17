@@ -1,22 +1,35 @@
 pipeline {
     agent none
-    environment{
-        DOCKERHUB_CREDS = credentials('dockerhub')
-    }
+    //environment{
+    //    DOCKERHUB_CREDS = credentials('dockerhub')
+    //}
 
     stages {
         stage('Unit Test') {
             agent{
-                docker {
-                    image 'node:21-alpine3.18'
+                kubernetes {
+                //cloud 'kubernetes'
+                defaultContainer 'node'
+                namespace 'default'
+                yaml ''' 
+                apiVersion: v1
+                kind: Pod
+                spec:
+                    containers:
+                    - name: node
+                      image: node:20.11.1-alpine3.19
+                      command:
+                      - cat
+                      tty: true
+                '''
                 }
             }
             steps {
                 //script {
                         //checkout scm
                         //sh 'npm install'
-                        //sh 'npm test'
                         sh 'node --version'
+                        sh 'npm test'
                         //sh 'npm ci'
                         //sh 'npm run lint'
                         //sh 'npm ci:test'
