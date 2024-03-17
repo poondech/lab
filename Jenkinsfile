@@ -25,17 +25,18 @@ pipeline {
                 }
             }
             steps {
+                    dir('app'){
                 //script {
                         //checkout scm
                         //sh 'npm install'
                         sh 'node --version'
-                        sh 'cd app'
                         sh 'npm test'
                         //sh 'npm ci'
                         //sh 'npm run lint'
                         //sh 'npm ci:test'
                         //step([$class: 'JUnitResultArchiver', testResults: '**/test-results.xml'])  
                 //}
+                    }
             }
         }
 //
