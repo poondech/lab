@@ -31,6 +31,7 @@ pipeline {
                         sh 'npm install'
                         sh 'node --version'
                         sh 'npm run test:ci'
+                        junit 'coverage/junit.xml'
                         //sh 'npm run test:unit'
                         //sh 'npm run lint'
                         //sh 'npm ci:test'
