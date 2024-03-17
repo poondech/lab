@@ -30,8 +30,8 @@ pipeline {
                         //checkout scm
                         sh 'npm install'
                         sh 'node --version'
-                        //sh 'npm run test:ci'
-                        sh 'npm run test:unit'
+                        sh 'npm run test:ci'
+                        //sh 'npm run test:unit'
                         //sh 'npm run lint'
                         //sh 'npm ci:test'
                         //step([$class: 'JUnitResultArchiver', testResults: '**/test-results.xml'])  
