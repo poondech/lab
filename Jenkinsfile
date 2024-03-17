@@ -29,6 +29,7 @@ pipeline {
                         //checkout scm
                         //sh 'npm install'
                         sh 'node --version'
+                        sh 'cd app'
                         sh 'npm test'
                         //sh 'npm ci'
                         //sh 'npm run lint'
