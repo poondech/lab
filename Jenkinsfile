@@ -31,8 +31,8 @@ pipeline {
                         //sh 'npm install'
                         sh 'node --version'
                         //sh 'npm test'
-                        sh 'npm test:ci'
-                        //sh 'npm run lint'
+                        //sh 'npm test:ci'
+                        sh 'npm run lint'
                         //sh 'npm ci:test'
                         //step([$class: 'JUnitResultArchiver', testResults: '**/test-results.xml'])  
                 //}
