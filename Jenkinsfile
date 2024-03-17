@@ -25,7 +25,7 @@ pipeline {
                 }
             }
             steps {
-                    dir('app'){
+                    dir('app/test'){
                 //script {
                         //checkout scm
                         //sh 'npm install'
