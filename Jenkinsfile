@@ -1,29 +1,46 @@
 pipeline {
-    agent none
+    agent {
+            kubernetes {
+            //cloud 'kubernetes'
+            defaultContainer 'node'
+            namespace 'default'
+            yaml ''' 
+            apiVersion: v1
+            kind: Pod
+            spec:
+                containers:
+                - name: node
+                  image: node:20.11.1-alpine3.19
+                  command:
+                  - cat
+                  tty: true
+            '''
+            }
+        }
     //environment{
     //    DOCKERHUB_CREDS = credentials('dockerhub')
     //}
 
     stages {
         stage('Unit Test') {
-            agent{
-                kubernetes {
-                //cloud 'kubernetes'
-                defaultContainer 'node'
-                namespace 'default'
-                yaml ''' 
-                apiVersion: v1
-                kind: Pod
-                spec:
-                    containers:
-                    - name: node
-                      image: node:20.11.1-alpine3.19
-                      command:
-                      - cat
-                      tty: true
-                '''
-                }
-            }
+            //agent{
+            //    kubernetes {
+            //    //cloud 'kubernetes'
+            //    defaultContainer 'node'
+            //    namespace 'default'
+            //    yaml ''' 
+            //    apiVersion: v1
+            //    kind: Pod
+            //    spec:
+            //        containers:
+            //        - name: node
+            //          image: node:20.11.1-alpine3.19
+            //          command:
+            //          - cat
+            //          tty: true
+            //    '''
+            //    }
+            //}
             steps {
                     dir('app'){
                 //script {
@@ -42,26 +59,26 @@ pipeline {
         }
 //
         stage('OWASP Check') {
-            agent {
-                kubernetes {
-                    defaultContainer 'jnlp'
-                    namespace 'default'
-                    yaml '''
-                    apiVersion: v1
-                    kind: Pod
-                    spec:
-                        containers:
-                        - name: node
-                          image: node:20.11.1-alpine3.19
-                          command:
-                          - cat
-                          tty: true
-                '''
-                }
-            }
+            //agent {
+            //    kubernetes {
+            //        defaultContainer 'node'
+            //        namespace 'default'
+            //        yaml '''
+            //        apiVersion: v1
+            //        kind: Pod
+            //        spec:
+            //            containers:
+            //            - name: node
+            //              image: node:14
+            //              command:
+            //              - cat
+            //              tty: true
+            //    '''
+            //    }
+            //}
             steps {
                     dir('app'){
-                        sh 'npm install'
+                        //sh 'npm install'
                         sh 'npm run owasp'
                 //script {
                     //dependencyCheck additionalArguments: ''' 
