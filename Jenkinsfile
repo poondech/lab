@@ -58,13 +58,13 @@ pipeline {
                           image: node:14
                           command:
                           - cat
-                          - npm install
                           tty: true
                 """
                 }
             }
             steps {
                     dir(app){
+                        sh 'npm install'
                         sh 'npm run owasp'
                 //script {
                     //dependencyCheck additionalArguments: ''' 
