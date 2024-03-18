@@ -42,8 +42,8 @@ pipeline {
         }
 //
         stage('OWASP Check') {
-            agent{
-                kubenetes{
+            agent {
+                kubernetes {
                     defaultContainer 'jnlp'
                     namespace 'default'
                     yaml """
