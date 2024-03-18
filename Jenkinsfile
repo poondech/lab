@@ -41,18 +41,46 @@ pipeline {
             }
         }
 //
-    //    stage('OWASP Check') {
-    //        steps {
-    //            //script {
-//
-    //                    // Execute OWASP dependency check
-    //                    sh 'npm audit --json > owasp-report.json'
-    //                    // Publish OWASP report to Jenkins
-    //                    stash includes: 'owasp-report.json', name: 'owaspReport'
-//
-    //            //}
-    //        }
-    //    }
+        stage('OWASP Check') {
+            agent{
+                kubenetes{
+                    defaultContainer 'jnlp'
+                    namespace 'default'
+                    yaml """
+                    apiVersion: v1
+                    kind: Pod
+                    metadata:
+                        labels:
+                            app: owap
+                    spec:
+                        containers:
+                        - name: node
+                        image: node:14
+                        command:
+                        - /bin/sh
+                        - -c
+                        - npm install 
+                        volumeMounts:
+                        - name: workspace
+                          mountPath: /workspace
+                    volumes:
+                    - name: workspace
+                    emptyDir: {}
+                """
+                }
+            }
+            steps {
+                //script {
+                        sh 'dependency-check.sh --scan /workspace --format ALL --out /workspace/reports'
+                        archiveArtifacts 'reports/**'
+                        // Execute OWASP dependency check
+                        //sh 'npm audit --json > owasp-report.json'
+                        // Publish OWASP report to Jenkins
+                        //stash includes: 'owasp-report.json', name: 'owaspReport'
+
+                //}
+            }
+        }
 //
     //    stage('Build Docker Image') {
     //        steps {
