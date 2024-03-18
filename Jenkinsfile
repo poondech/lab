@@ -64,7 +64,7 @@ pipeline {
             }
             steps {
                     dir('app'){
-                        sh 'npm install'
+                        //sh 'npm install'
                         sh 'npm run owasp'
                 //script {
                     //dependencyCheck additionalArguments: ''' 
