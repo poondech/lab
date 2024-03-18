@@ -79,16 +79,16 @@ pipeline {
             steps {
                     dir('app'){
                         //sh 'npm install'
-                        sh 'npm i owasp-dependency-check'
-                        sh 'npm run owasp'
+                        //sh 'npm i owasp-dependency-check'
+                        //sh 'npm run owasp'
                 //script {
-                    //dependencyCheck additionalArguments: ''' 
-                    //            -o './'
-                    //            -s './'
-                    //            -f 'ALL' 
-                    //            --prettyPrint''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
-        //
-                    //dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+                    dependencyCheck additionalArguments: ''' 
+                                -o './'
+                                -s './'
+                                -f 'ALL' 
+                                --prettyPrint''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
+        
+                    dependencyCheckPublisher pattern: 'dependency-check-report.xml'
                         //sh 'dependency-check.sh --scan /workspace --format ALL --out /workspace/reports'
                     //    archiveArtifacts 'reports/**'
                         // Execute OWASP dependency check
