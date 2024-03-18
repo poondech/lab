@@ -63,7 +63,7 @@ pipeline {
                 }
             }
             steps {
-                    dir(app){
+                    dir('app'){
                         sh 'npm install'
                         sh 'npm run owasp'
                 //script {
