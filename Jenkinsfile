@@ -60,9 +60,7 @@ pipeline {
                           - /bin/sh
                           - -c
                           - npm install 
-                          volumeMounts:
-                          - name: workspace
-                            mountPath: /workspace
+                          dependency-check.sh --scan . --format ALL --out /workspace/reports
                     volumes:
                     - name: workspace
                       emptyDir: {}
@@ -71,7 +69,7 @@ pipeline {
             }
             steps {
                 //script {
-                        sh 'dependency-check.sh --scan /workspace --format ALL --out /workspace/reports'
+                        //sh 'dependency-check.sh --scan /workspace --format ALL --out /workspace/reports'
                         archiveArtifacts 'reports/**'
                         // Execute OWASP dependency check
                         //sh 'npm audit --json > owasp-report.json'
