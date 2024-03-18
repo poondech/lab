@@ -46,25 +46,22 @@ pipeline {
                 kubernetes {
                     defaultContainer 'jnlp'
                     namespace 'default'
-                    yaml """
+                    yaml '''
                     apiVersion: v1
                     kind: Pod
-                    metadata:
-                        labels:
-                            app: owap
                     spec:
                         containers:
                         - name: node
-                          image: node:14
+                          image: node:20.11.1-alpine3.19
                           command:
                           - cat
                           tty: true
-                """
+                '''
                 }
             }
             steps {
                     dir('app'){
-                        //sh 'npm install'
+                        sh 'npm install'
                         sh 'npm run owasp'
                 //script {
                     //dependencyCheck additionalArguments: ''' 
