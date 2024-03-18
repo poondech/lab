@@ -55,17 +55,17 @@ pipeline {
                     spec:
                         containers:
                         - name: node
-                        image: node:14
-                        command:
-                        - /bin/sh
-                        - -c
-                        - npm install 
-                        volumeMounts:
-                        - name: workspace
-                          mountPath: /workspace
+                          image: node:14
+                          command:
+                          - /bin/sh
+                          - -c
+                          - npm install 
+                          volumeMounts:
+                          - name: workspace
+                            mountPath: /workspace
                     volumes:
                     - name: workspace
-                    emptyDir: {}
+                      emptyDir: {}
                 """
                 }
             }
