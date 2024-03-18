@@ -42,33 +42,42 @@ pipeline {
         }
 //
         stage('OWASP Check') {
-            agent {
-                kubernetes {
-                    defaultContainer 'jnlp'
-                    namespace 'default'
-                    yaml """
-                    apiVersion: v1
-                    kind: Pod
-                    metadata:
-                        labels:
-                            app: owap
-                    spec:
-                        containers:
-                        - name: node
-                          image: node:14
-                          command:
-                          - /bin/sh
-                          - -c
-                          - npm install 
-                          dependency-check.sh --scan . --format ALL --out /workspace/reports
-                    volumes:
-                    - name: workspace
-                      emptyDir: {}
-                """
-                }
-            }
+            agent any
+            //    kubernetes {
+            //        defaultContainer 'jnlp'
+            //        namespace 'default'
+            //        yaml """
+            //        apiVersion: v1
+            //        kind: Pod
+            //        metadata:
+            //            labels:
+            //                app: owap
+            //        spec:
+            //            containers:
+            //            - name: node
+            //              image: node:14
+            //              command:
+            //              - /bin/sh
+            //              - -c
+            //              - |
+            //                cd app
+            //                npm install 
+            //                dependency-check.sh --scan . --format ALL --out /workspace/reports
+            //        volumes:
+            //        - name: workspace
+            //          emptyDir: {}
+            //    """
+            //    }
+            
             steps {
                 //script {
+                    dependencyCheck additionalArguments: ''' 
+                                -o './'
+                                -s './'
+                                -f 'ALL' 
+                                --prettyPrint''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
+        
+                    dependencyCheckPublisher pattern: 'dependency-check-report.xml'
                         //sh 'dependency-check.sh --scan /workspace --format ALL --out /workspace/reports'
                         archiveArtifacts 'reports/**'
                         // Execute OWASP dependency check
