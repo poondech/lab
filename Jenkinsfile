@@ -19,7 +19,7 @@ pipeline {
             }
         }
     environment {
-        JAVA_HOME = tool name: 'JDK', type: 'jdk' // Set JAVA_HOME to the JDK tool configured in Jenkins Global Tool Configuration
+        JAVA_HOME = tool name: 'JAVA', type: 'jdk' // Set JAVA_HOME to the JDK tool configured in Jenkins Global Tool Configuration
     }
     //environment{
     //    DOCKERHUB_CREDS = credentials('dockerhub')
