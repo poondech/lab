@@ -1,4 +1,7 @@
 pipeline {
+    environment {
+        JAVA_HOME = tool 'JDK' // Set JAVA_HOME to the JDK tool configured in Jenkins Global Tool Configuration
+    }
     agent {
             kubernetes {
             //cloud 'kubernetes'
@@ -79,7 +82,7 @@ pipeline {
             steps {
                     dir('app'){
                         sh script: "${JAVA_HOME}/bin/java -jar dependency-check.jar -o 'owasp' -s 'package-lock.json' -f 'HTML' --prettyPrint",
-                        tool: 'OWASP Dependency-Check Vulnerabilities'
+                        
                         //sh 'npm install'
                         //sh 'npm i owasp-dependency-check'
                         //sh 'npm run owasp'
