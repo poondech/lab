@@ -18,6 +18,9 @@ pipeline {
             '''
             }
         }
+    environment {
+        JAVA_HOME = tool name: 'JDK', type: 'jdk' // Set JAVA_HOME to the JDK tool configured in Jenkins Global Tool Configuration
+    }
     //environment{
     //    DOCKERHUB_CREDS = credentials('dockerhub')
     //}
@@ -79,7 +82,7 @@ pipeline {
             //}
             steps {
                     dir('app'){
-                        sh script: "${JAVA_HOME}/bin/java -jar dependency-check.jar -o 'owasp' -s 'package-lock.json' -f 'HTML' --prettyPrint",
+                        sh "${env.JAVA_HOME}/bin/java -jar dependency-check.jar -o 'owasp' -s 'package-lock.json' -f 'HTML' --prettyPrint",
                         
                         //sh 'npm install'
                         //sh 'npm i owasp-dependency-check'
