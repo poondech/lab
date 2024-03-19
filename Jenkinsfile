@@ -78,17 +78,19 @@ pipeline {
             //}
             steps {
                     dir('app'){
+                        sh script: "${JAVA_HOME}/bin/java -jar dependency-check.jar -o 'owasp' -s 'package-lock.json' -f 'HTML' --prettyPrint",
+                        tool: 'OWASP Dependency-Check Vulnerabilities'
                         //sh 'npm install'
                         //sh 'npm i owasp-dependency-check'
                         //sh 'npm run owasp'
                 //script {
-                    dependencyCheck additionalArguments: ''' 
-                                -o 'owasp'
-                                -s 'package-lock.json'
-                                -f 'HTML' 
-                                --prettyPrint''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
-        
-                    dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+                    //dependencyCheck additionalArguments: ''' 
+                    //            -o 'owasp'
+                    //            -s 'package-lock.json'
+                    //            -f 'HTML' 
+                    //            --prettyPrint''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
+        //
+                    //dependencyCheckPublisher pattern: 'dependency-check-report.xml'
                         //sh 'dependency-check.sh --scan /workspace --format ALL --out /workspace/reports'
                     //    archiveArtifacts 'reports/**'
                         // Execute OWASP dependency check
