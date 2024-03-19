@@ -10,7 +10,7 @@
     "test:ci": "tsc &&MOCHA_FILE=./coverage/junit.xml mocha --reporter mocha-junit-reporter -r ts-node/register test/**/*.test.ts --exit",
     "test:unit": "nodemon --watch . --ext ts --exec \"mocha -r ts-node/register test/**/*.test.ts\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "owasp": "dependency-check.sh --project \"ProjectTest\" --scan \"package-lock.json\" --out \"out\" --format \"XML\""
+    "owasp": "owasp-dependency-check --project \"ProjectTest\" --scan \"package-lock.json\" -f HTML JSON"
   },
   "repository": {
     "type": "git",
@@ -40,7 +40,8 @@
     "ts-jest": "^27.0.3",
     "ts-node": "^10.1.0",
     "tslint": "^6.1.3",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "owasp-dependency-check" : "^0.0.21"
   },
   "dependencies": {
     "dotenv": "^10.0.0",
