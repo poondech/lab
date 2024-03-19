@@ -83,7 +83,7 @@ pipeline {
             steps {
                     dir('app'){
 
-                    sh "${JAVA_HOME}/bin/java -jar dependency-check.jar -o 'owasp' -s 'package-lock.json' -f 'HTML' --prettyPrint"
+                    sh "$JAVA_HOME/bin/java -jar dependency-check.jar -o 'owasp' -s 'package-lock.json' -f 'HTML' --prettyPrint"
                         
                         //sh 'npm install'
                         //sh 'npm i owasp-dependency-check'
