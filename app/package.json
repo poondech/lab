@@ -13,7 +13,7 @@
     "test:ci": "tsc &&MOCHA_FILE=./coverage/junit.xml mocha --reporter mocha-junit-reporter -r ts-node/register test/**/*.test.ts --exit",
     "test:unit": "nodemon --watch . --ext ts --exec \"mocha -r ts-node/register test/**/*.test.ts\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "owasp": "node main.ts --project \"ProjectTest\" --scan \"package-lock.json\" -f HTML JSON"
+    "owasp": "owasp-dependency-check --project \"ProjectTest\" --scan \"package-lock.json\" -f HTML JSON"
   },
   "repository": {
     "type": "git",
