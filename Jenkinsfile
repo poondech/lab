@@ -82,12 +82,13 @@ pipeline {
             //}
             steps {
                     dir('app'){
-                        sh "${env.JAVA_HOME}/bin/java -jar dependency-check.jar -o 'owasp' -s 'package-lock.json' -f 'HTML' --prettyPrint",
+
+                    sh "${env.JAVA_HOME}/bin/java -jar dependency-check.jar -o 'owasp' -s 'package-lock.json' -f 'HTML' --prettyPrint",
                         
                         //sh 'npm install'
                         //sh 'npm i owasp-dependency-check'
                         //sh 'npm run owasp'
-                //script {
+                     //script {
                     //dependencyCheck additionalArguments: ''' 
                     //            -o 'owasp'
                     //            -s 'package-lock.json'
@@ -104,8 +105,8 @@ pipeline {
 
                 //}
                     }
+                }
             }
-        }
 //
     //    stage('Build Docker Image') {
     //        steps {
