@@ -1,7 +1,5 @@
 pipeline {
-    environment {
-        JAVA_HOME = tool 'JDK' // Set JAVA_HOME to the JDK tool configured in Jenkins Global Tool Configuration
-    }
+   
     agent {
             kubernetes {
             //cloud 'kubernetes'
