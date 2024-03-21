@@ -18,8 +18,9 @@ pipeline {
             '''
             }
         }
-    environment {
-        JAVA_HOME = tool name: 'JAVA', type: 'jdk' // Set JAVA_HOME to the JDK tool configured in Jenkins Global Tool Configuration
+    tools {
+        // Define JDK by name (as configured in Jenkins)
+        jdk 'java'
     }
     //environment{
     //    DOCKERHUB_CREDS = credentials('dockerhub')
@@ -52,6 +53,7 @@ pipeline {
                         sh 'wget -q -O tmp.zip https://github.com/jeremylong/DependencyCheck/releases/download/v9.0.10/dependency-check-9.0.10-release.zip && unzip tmp.zip && rm tmp.zip'
                         sh 'npm install -D owasp-dependency-check'
                         sh 'npm fund'
+                        sh 'javac -version'
                         //sh 'brew install dependency-check'
                         //sh 'npm install -D owasp-dependency-check'
         //                sh 'node --version'
