@@ -91,7 +91,7 @@ pipeline {
                         //sh 'npm fund'
                         //sh 'npm audit'
                         sh 'ls'
-                        sh 'cat node_modules/owasp-dependency-check/lib/utils.js'
+                        //sh 'cat node_modules/owasp-dependency-check/lib/utils.js'
                         //sh 'ls node_modules/owasp-dependency-check/node_modules/commander'
                         //sh 'ls node_modules/owasp-dependency-check/dependency-check/bin/' 
                         sh 'npm run owasp-test'
