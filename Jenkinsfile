@@ -50,6 +50,7 @@ pipeline {
                 //script {
                         //checkout scm
                         //sh 'npm install'
+                        sh 'brew install dependency-check'
                         sh 'npm install -D owasp-dependency-check'
         //                sh 'node --version'
         //                sh 'npm run test:ci'
