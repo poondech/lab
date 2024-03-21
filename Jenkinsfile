@@ -52,8 +52,8 @@ pipeline {
                         //checkout scm
                         sh 'wget -q -O tmp.zip https://github.com/jeremylong/DependencyCheck/releases/download/v9.0.10/dependency-check-9.0.10-release.zip && unzip tmp.zip && rm tmp.zip'
                         sh 'npm install -D owasp-dependency-check'
-                        sh 'npm fund'
-                        sh 'java -version'
+                        //sh 'npm fund'
+                        //sh 'java -version'
                         //sh 'brew install dependency-check'
                         //sh 'npm install -D owasp-dependency-check'
         //                sh 'node --version'
