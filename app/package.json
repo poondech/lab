@@ -16,7 +16,7 @@
   },
 
   "bin": {
-    "owasp-dependency-check": "index.js"
+    "owasp-dependency-check": "node_modules/owasp-dependency-check/index.js"
   },
 
   "repository": {
