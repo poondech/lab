@@ -86,11 +86,12 @@ pipeline {
                     //sh "$JAVA_HOME/bin/java -jar dependency-check.jar -o 'owasp' -s 'package-lock.json' -f 'HTML' --prettyPrint"
                         
                         //sh 'npm install'
-                        sh 'npm i owasp-dependency-check'
+                        //sh 'npm i owasp-dependency-check'
                         sh 'npm fund'
+                        sh 'npm audit'
                         //sh 'ls node_modules'
-                        sh 'ls node_modules/owasp-dependency-check/'
-                        sh 'ls node_modules/owasp-dependency-check/node_modules/'
+                        sh 'ls node_modules/owasp-dependency-check/lib'
+                        sh 'ls node_modules/owasp-dependency-check/node_modules/commander'
                         //sh 'ls node_modules/owasp-dependency-check/dependency-check/bin/' 
                         sh 'npm run owasp-test'
                      //script {
