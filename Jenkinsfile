@@ -100,7 +100,6 @@ pipeline {
                         //sh 'ls dependency-check/bin'
                         //sh 'ls node_modules/owasp-dependency-check/node_modules/commander'
                         //sh 'ls node_modules/owasp-dependency-check/dependency-check/bin/' 
-                        sh '/home/jenkins/agent/tools/hudson.model.JDK/java/jdk-11.0.22+7 dependency-check/bin/dependency-check.sh --project TEST --scan package-lock.json --out owasp --format HTML'
                         sh 'dependency-check/bin/dependency-check.sh --project "TEST" --scan "package-lock.json" --out "owasp" --format HTML'
                         //sh 'npm run owasp-test'
                         //sh 'npx owasp-dependency-check --project "TEST" --scan "package-lock.json" --out "owasp" --format HTML'
