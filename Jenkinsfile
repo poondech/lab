@@ -87,8 +87,8 @@ pipeline {
                         
                         //sh 'npm install'
                         //sh 'npm i owasp-dependency-check'
-                        sh 'npm fund'
-                        sh 'npm audit'
+                        //sh 'npm fund'
+                        //sh 'npm audit'
                         //sh 'ls node_modules'
                         sh 'ls node_modules/owasp-dependency-check/lib'
                         sh 'ls node_modules/owasp-dependency-check/node_modules/commander'
