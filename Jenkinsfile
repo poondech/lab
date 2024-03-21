@@ -20,7 +20,7 @@ pipeline {
         }
     tools {
         // Define JDK by name (as configured in Jenkins)
-        jdk 'java'
+        jdk 'jdk-11'
     }
     //environment{
     //    DOCKERHUB_CREDS = credentials('dockerhub')
