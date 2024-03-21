@@ -95,8 +95,8 @@ pipeline {
                         //sh 'cat node_modules/owasp-dependency-check/lib/utils.js'
                         //sh 'ls node_modules/owasp-dependency-check/node_modules/commander'
                         //sh 'ls node_modules/owasp-dependency-check/dependency-check/bin/' 
-                        //sh 'npm run owasp-test
-                        sh 'npx owasp-dependency-check --project "TEST" --scan "package-lock.json" --out "owasp" --format HTML'
+                        sh 'npm run owasp-test'
+                        //sh 'npx owasp-dependency-check --project "TEST" --scan "package-lock.json" --out "owasp" --format HTML'
                      //script {
                 //    dependencyCheck additionalArguments: ''' 
                 //                -o 'owasp'
