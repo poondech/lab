@@ -96,6 +96,8 @@ pipeline {
                         //sh 'ls node_modules/owasp-dependency-check/node_modules/commander'
                         //sh 'ls node_modules/owasp-dependency-check/dependency-check/bin/' 
                         //sh 'npm run owasp-test'
+                        sh 'java -version'
+                        sh 'which java'
                      //script {
                     dependencyCheck additionalArguments: ''' 
                                 -o 'owasp'
