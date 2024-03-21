@@ -12,11 +12,11 @@
     "test:unit": "nodemon --watch . --ext ts --exec \"mocha -r ts-node/register test/**/*.test.ts\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "owasp": "owasp-dependency-check --project \"MY_PROJECT\" --scan \"package-lock.json\" --exclude \"dependency-check-bin\" --out \"owasp\" --format HTML",
-    "owasp-test": "owasp-dependency-check --project 'TEST_PROJECT' --scan 'package-lock.json' --out 'owasp' --format HTML"
+    "owasp-test": "node index.js --project 'TEST_PROJECT' --scan 'package-lock.json' --out 'owasp' --format HTML"
   },
 
   "bin": {
-    "owasp-dependency-check": "dependency-check.sh"
+    "owasp-dependency-check": "index.js"
   },
 
   "repository": {
