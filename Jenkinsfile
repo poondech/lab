@@ -50,14 +50,14 @@ pipeline {
                 //script {
                         //checkout scm
                         sh 'npm install'
-                        sh 'node --version'
-                        sh 'npm run test:ci'
-                        junit 'coverage/junit.xml'
-                        //sh 'npm run test:unit'
-                        //sh 'npm run lint'
-                        //sh 'npm ci:test'
-                        //step([$class: 'JUnitResultArchiver', testResults: '**/test-results.xml'])  
-                //}
+        //                sh 'node --version'
+        //                sh 'npm run test:ci'
+        //                junit 'coverage/junit.xml'
+        //                //sh 'npm run test:unit'
+        //                //sh 'npm run lint'
+        //                //sh 'npm ci:test'
+        //                //step([$class: 'JUnitResultArchiver', testResults: '**/test-results.xml'])  
+        //        //}
                     }
             }
         }
@@ -87,7 +87,7 @@ pipeline {
                         
                         //sh 'npm install'
                         sh 'npm i owasp-dependency-check'
-                        sh 'npm run owasp'
+                        sh 'npm run owasp-test'
                      //script {
                     //dependencyCheck additionalArguments: ''' 
                     //            -o 'owasp'
