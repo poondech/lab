@@ -49,7 +49,8 @@ pipeline {
                     dir('app'){
                 //script {
                         //checkout scm
-                        sh 'npm install'
+                        //sh 'npm install'
+                        sh 'npm install -D owasp-dependency-check'
         //                sh 'node --version'
         //                sh 'npm run test:ci'
         //                junit 'coverage/junit.xml'
