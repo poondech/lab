@@ -51,7 +51,7 @@ pipeline {
                 //script {
                         //checkout scm
                         sh 'wget -q -O tmp.zip https://github.com/jeremylong/DependencyCheck/releases/download/v9.0.10/dependency-check-9.0.10-release.zip && unzip tmp.zip && rm tmp.zip'
-                        sh 'npm install -D owasp-dependency-check'
+                        //sh 'npm install -D owasp-dependency-check'
                         //sh 'npm fund'
                         //sh 'java -version'
                         //sh 'brew install dependency-check'
@@ -95,8 +95,9 @@ pipeline {
                         //sh 'npm i owasp-dependency-check'
                         //sh 'npm fund'
                         //sh 'npm audit'
-                        sh 'ls'
-                        sh 'ls dependency-check/bin'
+                        sh 'echo $JAVA_HOME'
+                        sh 'echo $PATH'
+                        //sh 'ls dependency-check/bin'
                         //sh 'ls node_modules/owasp-dependency-check/node_modules/commander'
                         //sh 'ls node_modules/owasp-dependency-check/dependency-check/bin/' 
                         sh 'dependency-check/bin/dependency-check.sh --project "TEST" --scan "package-lock.json" --out "owasp" --format HTML'
