@@ -12,16 +12,16 @@
     "test:unit": "nodemon --watch . --ext ts --exec \"mocha -r ts-node/register test/**/*.test.ts\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "owasp": "owasp-dependency-check --project \"MY_PROJECT\" --scan \"package-lock.json\" --exclude \"dependency-check-bin\" --out \"owasp\" --format HTML",
-    "owasp-test": "node node_modules/owasp-dependency-check/index.js --project 'TEST_PROJECT' --scan 'package-lock.json' --out 'owasp' --format HTML"
+    "owasp-test": "owasp-dependency-check --project 'TEST_PROJECT' --scan 'package-lock.json' --out 'owasp' --format HTML"
   },
 
   "bin": {
-    "owasp-dependency-check": "index.js"
+    "owasp-dependency-check": ""
   },
 
   "repository": {
     "type": "git",
-    "url": "https://github.com/etnetera/owasp-dependency-check"
+    "url": "https://github.com/jeremylong/DependencyCheck/releases/download/v9.0.10/dependency-check-9.0.10-release.zip"
   },
   "keywords": [
     "opsta",
