@@ -49,7 +49,7 @@ pipeline {
                     dir('app'){
                 //script {
                         //checkout scm
-                        //sh 'npm install'
+                        sh 'npm install owasp-dependency-check --save-dev'
                         //sh 'brew install dependency-check'
                         //sh 'npm install -D owasp-dependency-check'
         //                sh 'node --version'
@@ -95,15 +95,14 @@ pipeline {
                         //sh 'cat node_modules/owasp-dependency-check/lib/utils.js'
                         //sh 'ls node_modules/owasp-dependency-check/node_modules/commander'
                         //sh 'ls node_modules/owasp-dependency-check/dependency-check/bin/' 
-                        //sh 'npm run owasp-test'
-                    owaspDependencyCheck canRunOnFailed: true, canComputeNew: true, isQuick: false
-                        sh 'which java'
+                        //sh 'npm run owasp-test
+                        sh 'sh 'npx owasp-dependency-check --project "TEST" --scan "package-lock.json" --out "owasp" --format HTML''
                      //script {
-                    dependencyCheck additionalArguments: ''' 
-                                -o 'owasp'
-                                -s 'package-lock.json'
-                                -f 'HTML' 
-                                --prettyPrint''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
+                //    dependencyCheck additionalArguments: ''' 
+                //                -o 'owasp'
+                //                -s 'package-lock.json'
+                //                -f 'HTML' 
+                //                --prettyPrint''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
         //
                     //dependencyCheckPublisher pattern: 'dependency-check-report.xml'
                         //sh 'dependency-check.sh --scan /workspace --format ALL --out /workspace/reports'
