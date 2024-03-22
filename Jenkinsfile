@@ -97,7 +97,7 @@ pipeline {
                         //sh 'npm audit'
                         sh 'echo $JAVA_HOME'
                         sh 'echo $PATH'
-                        sh 'ls /home/jenkins/agent/tools/hudson.model.JDK/jdk-11'
+                        sh 'ls /home/jenkins/agent/tools/hudson.model.JDK/jdk-11/jdk-11.0.22+7-src'
                         sh 'ls -l /home/jenkins/agent/tools/hudson.model.JDK/jdk-11/bin/java'
 
                         //sh 'ls dependency-check/bin'
