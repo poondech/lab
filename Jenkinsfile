@@ -97,6 +97,10 @@ pipeline {
                         //sh 'npm audit'
                         sh 'echo $JAVA_HOME'
                         sh 'echo $PATH'
+                        sh 'cd /home/jenkins/agent/tools/hudson.model.JDK/jdk-11'
+                        sh 'ls -l'
+                        sh 'ls -l bin/java'
+                        
                         //sh 'ls dependency-check/bin'
                         //sh 'ls node_modules/owasp-dependency-check/node_modules/commander'
                         //sh 'ls node_modules/owasp-dependency-check/dependency-check/bin/' 
