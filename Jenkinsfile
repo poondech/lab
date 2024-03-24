@@ -114,7 +114,7 @@ pipeline {
                                 -f 'HTML' 
                                 --prettyPrint''', nvdCredentialsId: 'API_Key', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
         
-                    dependencyCheckPublisher pattern: 'owasp/dependency-check-report.xml'
+                    dependencyCheckPublisher pattern: 'owasp/dependency-check-report.html'
                         //sh 'dependency-check.sh --scan /workspace --format ALL --out /workspace/reports'
                     //    archiveArtifacts 'reports/**'
                         // Execute OWASP dependency check
