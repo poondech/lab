@@ -112,7 +112,7 @@ pipeline {
                                 -o 'owasp'
                                 -s 'package-lock.json'
                                 -f 'HTML' 
-                                --prettyPrint''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
+                                --prettyPrint''', nvdCredentialsId: 'API_Key', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
         //
                     dependencyCheckPublisher pattern: 'dependency-check-report.xml'
                         //sh 'dependency-check.sh --scan /workspace --format ALL --out /workspace/reports'
